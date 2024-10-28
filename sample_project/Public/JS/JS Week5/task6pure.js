@@ -1,14 +1,17 @@
 function getSum(accumulator, item){
-    return accumulator += parseFloat(item.value)
+    return accumulator += parseFloat(item.value);
 }
 
 
 
 function totup(myForm){
     let total = 0;
-    entries = myForm.elements.entry
+    entries = Array.from(myForm.elements.entry);
     total = entries.reduce(getSum,0);
-    total += parseFloat( myForm.elements.entry[1].value)
+    total = total * (1 - (myForm.elements.d1.value/100))
     
+    console.log (myForm.elements.entry);
+    console.log (entries.join());
+
     document.getElementById("totalled").innerHTML = total.toFixed(2);
 }
